@@ -8,8 +8,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ArticleSerializer
 from rest_framework import status
-
+from rest_framework import generics
+from rest_framework import mixins
 from rest_framework.views import APIView
+
+
+
 
 
 class ArticleAPIView (APIView):
@@ -47,7 +51,7 @@ def article_list(request):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
         
-
+#class based Views
 class ArticleDetails(APIView):
     def get_object(self,id):
         try:
